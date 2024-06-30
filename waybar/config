@@ -1,0 +1,46 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 25,
+		"margin-top": 0,
+		"margin-bottom": 0,
+		"margin-left": 0,
+		"margin-right": 0,
+    "modules-left": ["hyprland/workspaces"],
+		"modules-center": ["custom/audio"],
+    "modules-right": ["pulseaudio", "tray", "clock"],
+
+
+  "hyprland/workspaces": {
+    "active-only": false,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "all-outputs": true,
+    "on-click": "activate",
+    "format": "{name}"
+  },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%b %d\t%H:%M}"
+    },
+    "pulseaudio": {
+        "format": "{icon}     {volume}%",
+        "format-bluetooth": "{icon}  {volume}%\t",
+        "format-muted": "  ",
+        "format-icons": {
+            "headphones": "  ",
+            "default": ["  ", "  "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/audio": {
+        "format": "{}",
+        "max-length": 80,
+        "interval": 1, 
+        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", 
+	      "on-click": "playerctl --ignore-player=firefox play-pause"
+    }
+}
